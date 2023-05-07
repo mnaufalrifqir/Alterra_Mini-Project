@@ -31,3 +31,15 @@ func translateError(err error, trans ut.Translator) (errs []string) {
 	}
 	return errs
 }
+
+func TaskValidate(t model.Task) []string {
+	UserValidate := validator.New()
+	english := en.New()
+	uni := ut.New(english, english)
+	trans, _ := uni.GetTranslator("en")
+	_ = enTranslations.RegisterDefaultTranslations(UserValidate, trans)
+
+	err := UserValidate.Struct(t)
+	errs := translateError(err, trans)
+	return errs
+}
