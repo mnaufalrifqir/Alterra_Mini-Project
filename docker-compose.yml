@@ -1,0 +1,27 @@
+version: '3.8'
+services:
+  aws-service:
+    build: .
+    ports:
+      - 8080:8000
+    restart: on-failure
+    networks:
+      - app-network
+    depends_on:
+      - mysql-service
+
+  mysql-service:
+    image: mysql:latest
+    environment:
+      - MYSQL_ROOT_PASSWORD=password
+    ports:
+      - 3306
+    volumes:
+      - ./database/schema.sql:/data/application/init.sql
+    command: --init-file /data/application/init.sql
+    networks:
+      - app-network
+
+networks:
+  app-network:
+    driver: bridge
