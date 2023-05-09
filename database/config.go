@@ -29,9 +29,9 @@ type Config struct {
 func InitDB() {
 	config := Config{
 		DB_Username: "root",
-		DB_Password: "",
+		DB_Password: "password",
 		DB_Port:     "3306",
-		DB_Host:     "localhost",
+		DB_Host:     "mysql-service",
 		DB_Name:     "alterra_mini-project",
 	}
 
