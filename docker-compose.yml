@@ -1,0 +1,27 @@
+version: '2.2'
+services:
+  app:
+    build: .
+    ports:
+      - 8000:8000
+    restart: on-failure
+    networks:
+      - app-network
+    depends_on:
+      - mysql
+
+  mysql:
+    image: mysql:latest
+    environment:
+      MYSQL_ROOT_PASSWORD: password
+    volumes:
+      - ./database/schema.sql:/data/application/init.sql
+    command: --init-file /data/application/init.sql
+    ports:
+      - 3307:3306
+    networks:
+      - app-network
+
+networks:
+  app-network:
+    driver: bridge
