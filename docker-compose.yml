@@ -1,6 +1,6 @@
-version: '3.8'
+version: '2.2'
 services:
-  aws-service:
+  app:
     build: .
     ports:
       - 8000:8000
@@ -8,9 +8,9 @@ services:
     networks:
       - app-network
     depends_on:
-      - mysql-service
+      - mysql
 
-  mysql-service:
+  mysql:
     image: mysql:latest
     environment:
       - MYSQL_ROOT_PASSWORD=password
