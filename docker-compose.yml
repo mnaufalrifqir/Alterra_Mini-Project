@@ -9,7 +9,7 @@ services:
       - app-network
     depends_on:
       - mysql
-  
+
   mysql:
     image: mysql:latest
     environment:
@@ -23,5 +23,5 @@ services:
       - app-network
 
 networks:
- app-network:
-  driver: bridge
+  app-network:
+    driver: bridge

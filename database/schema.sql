@@ -1,1 +1,1 @@
-CREATE DATABASE IF NOT EXISTS alterra_mini-project;
+CREATE DATABASE IF NOT EXISTS `alterra_mini-project`;
